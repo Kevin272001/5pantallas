@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// Archivo principal
 void main() {
   runApp(MyApp());
 }
@@ -21,11 +22,69 @@ class MyApp extends StatelessWidget {
   }
 }
 
+// Clase personalizada para el menú Drawer
+class AppDrawer extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Drawer(
+      child: ListView(
+        padding: EdgeInsets.zero,
+        children: [
+          DrawerHeader(
+            decoration: BoxDecoration(color: Colors.blue),
+            child: Text(
+              'Menú de Navegación',
+              style: TextStyle(color: Colors.white, fontSize: 20),
+            ),
+          ),
+          ListTile(
+            leading: Icon(Icons.home),
+            title: Text('Inicio'),
+            onTap: () {
+              Navigator.pushNamed(context, '/');
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.login),
+            title: Text('Login'),
+            onTap: () {
+              Navigator.pushNamed(context, '/login');
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.app_registration),
+            title: Text('Registro'),
+            onTap: () {
+              Navigator.pushNamed(context, '/registro');
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.description),
+            title: Text('Descripción'),
+            onTap: () {
+              Navigator.pushNamed(context, '/descripcion');
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.settings),
+            title: Text('Opciones'),
+            onTap: () {
+              Navigator.pushNamed(context, '/opciones');
+            },
+          ),
+        ],
+      ),
+    );
+  }
+}
+
 // Pantalla de Bienvenida
 class BienvenidaScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: Text('Bienvenida')),
+      drawer: AppDrawer(),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -54,6 +113,7 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Login')),
+      drawer: AppDrawer(),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(
@@ -91,6 +151,7 @@ class RegistroScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Registro')),
+      drawer: AppDrawer(),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(
@@ -125,6 +186,7 @@ class DescripcionScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Descripción del Proyecto')),
+      drawer: AppDrawer(),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(20.0),
@@ -145,6 +207,7 @@ class OpcionesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Opciones')),
+      drawer: AppDrawer(),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
